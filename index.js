@@ -13,21 +13,15 @@ const LaunchRequestHandler = {
       return handlerInput.requestEnvelope.request.type === 'LaunchRequest';
     },
     async handle(handlerInput) {
-        const speechText = await getRaces().then((data) => {
-            return buildRaces(data);
-        });
+      const speechText = await getRaces().then((data) => {
+          return data;
+      });
 
     return handlerInput.responseBuilder
-        .speak(races)
+        .speak(speechText)
         .reprompt(speechText)
         //.withSimpleCard('Hello World', speechText)
         .getResponse();
-  
-    //   return handlerInput.responseBuilder
-    //     .speak(speechText)
-    //     .reprompt(speechText)
-    //     //.withSimpleCard('Hello World', speechText)
-    //     .getResponse();
     },
   }; // End LaunchRequestHandler
 
